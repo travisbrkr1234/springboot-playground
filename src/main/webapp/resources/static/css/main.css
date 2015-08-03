@@ -1,0 +1,20 @@
+#username {
+    display: inline-block;
+    color: green;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+
+}
+
+#password {
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    display: inline-block;
+}
+
+#loginButton {
+    display: inline-block;
+    color:red;
+    background-color:green;
+    border-radius: 2px 2px 2px 2px;
+}
