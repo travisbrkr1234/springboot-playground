@@ -19,6 +19,14 @@ public class HelloWorldController {
         return mav;
     }
 
+    @RequestMapping(value = "/wizardoptions", method = RequestMethod.GET)
+    public ModelAndView wizardoptions() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("wizardoptions");
+
+        return mav;
+    }
+
     @RequestMapping(value = "/export", method = RequestMethod.GET)
     public ModelAndView export() {
         ModelAndView mav = new ModelAndView();
