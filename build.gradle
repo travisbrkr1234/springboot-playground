@@ -13,6 +13,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 war {
@@ -27,7 +28,9 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile ("org.springframework.boot:spring-boot-starter-web")
+    //compile("org.springframework.boot:spring-boot-starter-security")
+    //testCompile("junit:junit")
     //Required dependency for JSP
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }
