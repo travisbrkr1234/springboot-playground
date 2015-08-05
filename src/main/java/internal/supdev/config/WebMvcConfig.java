@@ -1,4 +1,4 @@
-package main.java.com.companies.config;
+package main.java.internal.supdev.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

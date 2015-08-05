@@ -1,4 +1,4 @@
-package main.java.com.companies;
+package main.java.internal.supdev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

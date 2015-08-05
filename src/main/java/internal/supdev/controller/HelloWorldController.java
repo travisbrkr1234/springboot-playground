@@ -1,4 +1,4 @@
-package main.java.com.companies.controller;
+package main.java.internal.supdev.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
