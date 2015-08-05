@@ -11,28 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloWorldController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView login() {
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public ModelAndView hello() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("login");
+        mav.setViewName("hello");
+
+        String str = "Hello World!";
+        mav.addObject("message", str);
 
         return mav;
     }
-
-    @RequestMapping(value = "/wizardoptions", method = RequestMethod.GET)
-    public ModelAndView wizardoptions() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("wizardoptions");
-
-        return mav;
-    }
-
-    @RequestMapping(value = "/export", method = RequestMethod.GET)
-    public ModelAndView export() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("export");
-
-        return mav;
-    }
-
 }
