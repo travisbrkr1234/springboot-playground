@@ -7,27 +7,44 @@ buildscript {
     }
     dependencies {
         //Required dependency for spring-boot plugin
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.2.BUILD-SNAPSHOT'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'war'
+apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 war {
-    baseName = 'springboot-playground'
+    baseName = 'springboot-playgroundw'
     version =  '0.1'
 }
-
+jar {
+    baseName = 'springboot-playground'
+    version =  '0.1.0'
+}
 repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/snapshot" }
     maven { url "http://repo.spring.io/milestone" }
 }
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
+  compile("org.springframework.boot:spring-boot-starter-security")
+  compile("org.springframework.boot:spring-boot-starter-web")
+}
+
+
+
+dependencies {
+    compile ("org.springframework.boot:spring-boot-starter-web")
+    //compile("org.springframework.boot:spring-boot-starter-security")
+    //testCompile("junit:junit")
     //Required dependency for JSP
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }

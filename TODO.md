@@ -1,0 +1,2 @@
+- Add security and other page mapping
+- don't forget to update the pom and build
