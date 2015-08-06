@@ -139,3 +139,10 @@ input {
 p {
   text-align: center;
 }
+/*This is for the main logo in the front screen*/
+.text-danger{
+  color: #f55;
+}
+#logo{
+  left: 25%;
+}
