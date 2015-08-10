@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exporting</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+</head>
+<body>
+<form name="form" th:action="@{/export}" action="/export" method="POST">
+    <fieldset>
+        <input type="text" name="appName" value="" placeholder="App Name" id="darkField" />
+        <input type="password" name="apiKey" placeholder="API Key" id="darkField" />
+    </fieldset>
+    <input type="submit" id="export" value="Gimmie Data!" class="btn btn-primary" />
+</form>
+</body>
+</html>
