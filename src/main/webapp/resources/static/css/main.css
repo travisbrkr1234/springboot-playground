@@ -38,6 +38,7 @@ input {
   padding: 0;
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
+  width: 150px;
 }
 
 .site__container {
@@ -136,6 +137,11 @@ input {
   width: 90%;
 }
 
+.wizard__container {
+  margin: 0 auto;
+}
+
 p {
   text-align: center;
 }
+
