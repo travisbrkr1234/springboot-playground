@@ -35,16 +35,10 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-  compile("org.springframework.boot:spring-boot-starter-security")
-  compile("org.springframework.boot:spring-boot-starter-web")
-}
-
-
-
-dependencies {
     compile ("org.springframework.boot:spring-boot-starter-web")
-    //compile("org.springframework.boot:spring-boot-starter-security")
-    //testCompile("junit:junit")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    testCompile("junit:junit")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     //Required dependency for JSP
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 }

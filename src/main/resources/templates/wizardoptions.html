@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wizard Main</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+</head>
+    <body>
+        <div style="align-content: center; margin-top: 150px;">
+            <form th:action="@{/export}" action="export" method="get">
+                <input id="optionsW" type="submit" value="Export Data" />
+            </form><form th:action="@{/importData}" action="importData" method="get">
+                <input id="optionsW" type="submit" value="Import Data" />
+            </form><form th:action="@{/cleanCSV}" action="cleanCSV" method="get">
+                <input id="optionsW" type="submit" value="Clean CSV" />
+            </form>
+        </div>
+    </body>
+</html>
