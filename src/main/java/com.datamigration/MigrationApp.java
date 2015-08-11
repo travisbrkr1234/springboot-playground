@@ -56,6 +56,18 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         return "result";
     }
 
+    @RequestMapping(value="/CIA", method=RequestMethod.GET)
+    public String ciaSubmit(@ModelAttribute Model model) {
+        model.addAttribute("cia", new CIA());
+        return "cia";
+    }
+
+    @RequestMapping(value="/CIA", method=RequestMethod.POST)
+    public String ciaSubmit(@ModelAttribute CIA cia, Model model) {
+        model.addAttribute("cia", cia);
+        return "cia";
+    }
+
     @RequestMapping("/foo")
     public String foo() {
         throw new RuntimeException("Expected exception in controller");

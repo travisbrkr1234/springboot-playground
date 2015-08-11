@@ -4,10 +4,13 @@ buildscript {
         mavenCentral()
         maven { url "http://repo.spring.io/snapshot" }
         maven { url "http://repo.spring.io/milestone" }
+
+
     }
     dependencies {
         //Required dependency for spring-boot plugin
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
+
     }
 }
 
@@ -16,6 +19,7 @@ apply plugin: 'eclipse'
 apply plugin: 'war'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+
 
 war {
     baseName = 'springboot-playgroundw'
@@ -35,7 +39,15 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
+
     compile ("org.springframework.boot:spring-boot-starter-web")
+    compile ("org.apache:apache:17")
+    compile ('org.apache.xmlrpc:xmlrpc-client:3.1.3')
+    compile ('org.apache.commons:commons-csv:1.1')
+    compile ('org.apache:apache-jar-resource-bundle:1.4')
+    compile ('commons-io:commons-io:2.4')
+    compile ('org.apache.xmlrpc:xmlrpc:3.1.3')
+    compile ('org.apache.commons:commons-collections4:4.0')
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile("junit:junit")
