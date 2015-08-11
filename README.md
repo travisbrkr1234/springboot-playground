@@ -26,3 +26,5 @@ gradle bootRun
 ```
 -    open a web browser and navigate to localhost:8080/hello
 this will load the hello.jsp from the project
+
+##Working from https://spring.io/guides/gs/integration/

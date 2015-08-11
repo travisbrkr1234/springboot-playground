@@ -4,14 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+
 import org.springframework.core.annotation.Order;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.Model;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -32,6 +43,17 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         model.put("title", "Hello Home");
         model.put("date", new Date());
         return "home";
+    }
+    @RequestMapping(value="/greeting", method=RequestMethod.GET)
+    public String greetingForm(Model model) {
+        model.addAttribute("greeting", new Greeting());
+        return "greeting";
+    }
+
+    @RequestMapping(value="/greeting", method=RequestMethod.POST)
+    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
+        model.addAttribute("greeting", greeting);
+        return "result";
     }
 
     @RequestMapping("/foo")
