@@ -56,6 +56,22 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         return "result";
     }
 
+    //new stuff
+
+    @RequestMapping(value="/export", method=RequestMethod.GET)
+    public String exportForm(Model model) {
+        model.addAttribute("export", new Export());
+        return "export";
+    }
+
+    @RequestMapping(value="/export", method=RequestMethod.POST)
+    public String exportSubmit(@ModelAttribute Export export, Model model) {
+        model.addAttribute("export", export);
+        return "exportResults";
+    }
+
+    //dne
+
     @RequestMapping(value="/CIA", method=RequestMethod.GET)
     public String ciaSubmit(@ModelAttribute Model model) {
         model.addAttribute("cia", new CIA());
@@ -77,7 +93,7 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/wizardoptions").setViewName("wizardoptions");
-        registry.addViewController("/export").setViewName("export");
+        //registry.addViewController("/export").setViewName("export");
     }
 
     @Bean
