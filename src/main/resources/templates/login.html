@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>CIA</title>
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
-</head>
-<body onload="document.form.username.focus();">
-	<div class="container">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<ul class="nav">
-					<li><a th:href="@{/}" href="home.html"> CIA </a></li>
-				</ul>
+	<head>
+		<title>CIA</title>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+	</head>
+	<body onload="document.form.username.focus();">
+		<div class="container">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<ul class="nav">
+						<li><a th:href="@{/}" href="home.html"> CIA </a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="loginContainer">
+				<p th:if="${param.logout}" class="alert">Have a good day!</p>
+				<p th:if="${param.error}" class="alert alert-error">Err, Err Will Robinson</p>
+				<form name="form" th:action="@{/login}" action="/login" method="POST">
+					<fieldset>
+						<input type="text" name="username" value="" placeholder="Username" id="darkField" />
+						<input type="password" name="password" placeholder="Password" id="darkField" />
+					</fieldset>
+					<input type="submit" id="login" value="Login"
+						class="btn btn-primary" />
+				</form>
 			</div>
 		</div>
-		<div class="loginContainer">
-			<p th:if="${param.logout}" class="alert">Have a good day!</p>
-			<p th:if="${param.error}" class="alert alert-error">Err, Err Will Robinson</p>
-			<form name="form" th:action="@{/login}" action="/login" method="POST">
-				<fieldset>
-					<input type="text" name="username" value="" placeholder="Username" id="darkField" />
-					<input type="password" name="password" placeholder="Password" id="darkField" />
-				</fieldset>
-				<input type="submit" id="login" value="Login"
-					class="btn btn-primary" />
-			</form>
-		</div>
-	</div>
-</body>
+	</body>
 </html>
