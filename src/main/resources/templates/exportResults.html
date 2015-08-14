@@ -1,13 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>API Results</title>
+    <title>Verify Info</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>API Results</h1>
-<p th:text="'app name: ' + ${export.appName}" />
-<p th:text="'key: ' + ${export.apiKey}" />
-<a href="/export">Submit another query</a>
+    <h1>Verify Info</h1>
+        <p th:text="'app name: ' + ${export.appName}" />
+        <p th:text="'key: ' + ${export.apiKey}" />
+
+    <form action="/upload" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <div>Name Your File:</div>
+        <input type="text" name="name" />
+        <div>File to upload:</div>
+        <input type="file" name="file" />
+        <br />
+        <br />
+        <input type="submit" value="Upload" />
+    </form>
+
 </body>
 </html>
