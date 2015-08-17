@@ -54,24 +54,12 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
     @RequestMapping(value="/", method=RequestMethod.POST)
     public String baseSubmit(@ModelAttribute ImportIntegration account, Model model){
         model.addAttribute("account", account);
-        try{
-            if (account.getConnected()){
+        if (account.getConnected()){
                 return "home";
-
-            }else{
-                return "home";
-            }
-        } catch(Exception e) {
-                return "home";
-            } 
+        }else{
+            return "home";
+        }
     }
-    // @RequestMapping("/")
-    // public String home(Map<String, Object> model) {
-    //     model.put("appname", "if188");
-    //     model.put("apikey", "96dfc73cd5e36206313d8125c82c902687e460f865ea9f6d2a02dae682d210d8");
-    //     model.put("date", new Date());
-    //     return "home";
-    // }
     @RequestMapping(value="/greeting", method=RequestMethod.GET)
     public String greetingForm(Model model) {
         model.addAttribute("greeting", new Greeting());

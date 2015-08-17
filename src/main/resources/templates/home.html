@@ -8,31 +8,14 @@
     <body>
         <div class="container">
             <div th:include="nav :: mainnav"></div>
-            <div th:include="namekeyform :: appDetails"></div>
-            <div th:switch="${application.connected}">
-                <div th:case="false">
+            <div th:switch="${account.numExistingContacts}">
+                <div th:case="0">
                     <div th:include="namekeyform :: appDetails"></div>
-                </div>
-                <div th:case="true">
-                    <div th:include="filepick :: upload"></div>
                 </div>
                 <div th:case="*">
                     <div th:include="filepick :: upload"></div>
                 </div>
-                    
-                <div th:include="filepick :: upload"></div>
             </div>
-            <!--             <form action="#" th:action="@{/}" th:object="${account}" method="post">
-                <input type="text" name="appName" value="if188" th:field="*{appName}" />
-                <input type="password" name="apiKey" value="96dfc73cd5e36206313d8125c82c902687e460f865ea9f6d2a02dae682d210d8" id="darkField" th:field="*{apiKey}" />
-                <input type="submit" value="Verify API data" />
-            </form> -->
-            <!--  <form th:action="@{/wizardoptions}" method="get">
-                <input type="submit" value="Start Wizard"/>
-            </form>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form> -->
             <div th:include="footer :: copy"></div>
         </div>
     </body>

@@ -24,8 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ImportIntegration {
 
-    private String appName;
-    private String apiKey;
+    private String appName = null;
+    private String apiKey = null;
     private String name;
     private MultipartFile file;
     private boolean fileuploaded;
@@ -34,8 +34,9 @@ public class ImportIntegration {
     private URL serverAddress;
     private ArrayList dataToPass;
     private HashMap submitData;
-    private Object[] results = new Object[0];
+    private int results;
     private boolean connected = false;
+    private int numExistingContacts=0;
           
     public String getAppName() {
         return appName;
@@ -80,7 +81,7 @@ public class ImportIntegration {
             this.connected=false;
         }
     }
-    public boolean getConnected() throws XmlRpcException, MalformedURLException{
+    public void connect() throws XmlRpcException, MalformedURLException{
         this.submitData= new HashMap();
         this.connected=false;
         try {
@@ -89,11 +90,29 @@ public class ImportIntegration {
             this.dataToPass.add(this.apiKey);
             this.dataToPass.add("Contact");
             this.dataToPass.add(this.submitData);
-            results =  (Object[]) this.connection.execute("DataService.count", this.dataToPass);
+            this.results =  (int)this.connection.execute("DataService.count", this.dataToPass);
             this.connected=true;
         }catch (XmlRpcException e) {
           this.connected=false;
       }
-      return this.connected;
+    }
+    public int getNumExistingContacts() throws XmlRpcException{
+        this.submitData= new HashMap();
+        this.dataToPass = new ArrayList();
+        this.dataToPass.add(this.apiKey);
+        this.dataToPass.add("Contact");
+        this.dataToPass.add(this.submitData);
+        if (this.connected){
+            try {
+                this.numExistingContacts = (int) this.connection.execute("DataService.count", this.dataToPass);
+            }catch (XmlRpcException e){}
+        }
+        return this.numExistingContacts;
+    }
+    public boolean getConnected(){
+        try{
+            this.connect();
+        }catch(XmlRpcException|MalformedURLException e){}
+        return this.connected;
     }
 }

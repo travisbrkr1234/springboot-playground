@@ -3,6 +3,9 @@
     xmlns:th="http://www.thymeleaf.org">
 	<body>
 		<div th:fragment="appDetails">
+			<p th:text="'id: ' + ${account.appName}" />
+			<p th:text="'key: ' + ${account.apiKey}" />
+			<p th:text="'Existing: ' + ${account.numExistingContacts}" />
 			<form name="form2" action="#" th:action="@{/}" th:object="${account}" method="post">
 				<fieldset>
 					<input type="text" name="appName" value="if188" id="darkField" th:field="*{appName}" />
