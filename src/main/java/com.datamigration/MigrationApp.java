@@ -1,6 +1,12 @@
+/* 
+* @Author: carlos.ochoa
+* @Date:   7/31/2015
+* @Last Modified 2015-08-16
+* @Modified By Jeremiah Marks - Jeremiah@JLMarks.org
+*/
 package com.datamigration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -34,9 +40,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
-/**
- * Created by carlos.ochoa on 7/31/2015.
- */
 @EnableAutoConfiguration
 @ComponentScan
 @Controller
