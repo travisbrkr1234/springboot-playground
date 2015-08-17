@@ -72,17 +72,6 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         return "result";
     }
 
-    //new stuff
-
-   /* @RequestMapping(value="/importData", method=RequestMethod.GET)
-    public String importData(Model model) {
-        model.addAttribute("importData", new importData());
-        return "import";
-    }*/
-    /*
-    The /upload needs to be rewritten where it only returns the string that is served, I think.
-    I think that @ResponseBody is more for API stuff than just serving html.
-    */
     @RequestMapping(value="/upload", method=RequestMethod.GET)
     public @ResponseBody String provideUploadInfo() {
         return "You can upload a file by posting to this same URL.";
@@ -105,9 +94,7 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
             return "You failed to upload " + name + " because the file was empty.";
         }
     }
-/*
-I am going to try and 
-*/
+
     @RequestMapping(value="/export", method=RequestMethod.GET)
     public String exportForm(Model model) {
         model.addAttribute("export", new Export());
@@ -118,20 +105,6 @@ I am going to try and
     public String exportSubmit(@ModelAttribute Export export, Model model) {
         model.addAttribute("export", export);
         return "exportResults";
-    }
-
-    //dne
-
-    @RequestMapping(value="/CIA", method=RequestMethod.GET)
-    public String ciaSubmit(Model model) {
-        model.addAttribute("cia", new CIA());
-        return "cia";
-    }
-
-    @RequestMapping(value="/CIA", method=RequestMethod.POST)
-    public String ciaSubmit(@ModelAttribute CIA cia, Model model) {
-        model.addAttribute("cia", cia);
-        return "cia";
     }
 
     @RequestMapping("/foo")

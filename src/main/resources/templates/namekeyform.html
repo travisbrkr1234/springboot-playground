@@ -2,6 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org">
 	<body>
+<!-- 
+This provides a way to always get an applications details. This way if the credentials are wrong, or
+if the user wants to change to a different application, they can.
+ -->
 		<div th:fragment="appDetails">
 			<p th:text="'id: ' + ${account.appName}" />
 			<p th:text="'key: ' + ${account.apiKey}" />
