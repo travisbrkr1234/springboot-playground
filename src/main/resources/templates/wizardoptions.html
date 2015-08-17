@@ -6,14 +6,18 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
 </head>
     <body>
+        <div th:include="nav :: mainnav"></div>
         <div style="align-content: center; margin-top: 150px;">
             <form th:action="@{/export}" action="export" method="get">
                 <input id="optionsW" type="submit" value="Export Data" />
-            </form><form th:action="@{/importData}" action="importData" method="get">
+            </form>
+            <form th:action="@{/importData}" action="importData" method="get">
                 <input id="optionsW" type="submit" value="Import Data" />
-            </form><form th:action="@{/cleanCSV}" action="cleanCSV" method="get">
+            </form>
+            <form th:action="@{/cleanCSV}" action="cleanCSV" method="get">
                 <input id="optionsW" type="submit" value="Clean CSV" />
             </form>
         </div>
+        <div th:include="footer :: copy"></div>
     </body>
 </html>

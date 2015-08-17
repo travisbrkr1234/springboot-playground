@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Exporting</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
-</head>
-<body>
-<form name="form2" action="#" th:action="@{/export}" th:object="${export}" method="post">
-    <fieldset>
-        <input type="text" name="appname" value="" placeholder="App Name" id="darkField" th:field="*{appName}" />
-        <input type="password" name="apikey" placeholder="API Key" id="darkField" th:field="*{apiKey}" />
-    </fieldset>
-    <input type="submit" id="export" value="Gimmie Data!" class="btn btn-primary" />
-</form>
-</body>
+	<head>
+		<title>Exporting</title>
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+	</head>
+	<body>
+		<form name="form2" action="#" th:action="@{/export}" th:object="${export}" method="post">
+			<fieldset>
+				<input type="text" name="appname" value="" placeholder="App Name" id="darkField" th:field="*{appName}" />
+				<input type="password" name="apikey" placeholder="API Key" id="darkField" th:field="*{apiKey}" />
+			</fieldset>
+			<input type="submit" id="export" value="Gimmie Data!" class="btn btn-primary" />
+		</form>
+	</body>
 </html>

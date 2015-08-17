@@ -7,23 +7,20 @@
 	</head>
 	<body onload="document.form.username.focus();">
 		<div class="container">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<ul class="nav">
-						<li><a th:href="@{/}" href="home.html"> CIA </a></li>
-					</ul>
-				</div>
-			</div>
+            <div th:include="nav :: mainnav"></div>
 			<div class="loginContainer">
 				<p th:if="${param.logout}" class="alert">Have a good day!</p>
-				<p th:if="${param.error}" class="alert alert-error">Err, Err Will Robinson</p>
+				
+				<p th:if="${param.error}" class="alert alert-error">
+					Err, Err Will Robinson
+				</p>
+				
 				<form name="form" th:action="@{/login}" action="/login" method="POST">
 					<fieldset>
 						<input type="text" name="username" value="" placeholder="Username" id="darkField" />
 						<input type="password" name="password" placeholder="Password" id="darkField" />
 					</fieldset>
-					<input type="submit" id="login" value="Login"
-						class="btn btn-primary" />
+					<input type="submit" id="login" value="Login" class="btn btn-primary" />
 				</form>
 			</div>
 		</div>

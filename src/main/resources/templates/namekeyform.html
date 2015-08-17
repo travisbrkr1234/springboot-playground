@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<div th:fragment="appDetails">
+			<form name="form2" action="#" th:action="@{/}" th:object="${account}" method="post">
+				<fieldset>
+					<input type="text" name="appName" value="if188" id="darkField" th:field="*{appName}" />
+					<input type="password" name="apiKey" value="96dfc73cd5e36206313d8125c82c902687e460f865ea9f6d2a02dae682d210d8" id="darkField" th:field="*{apiKey}" />
+				</fieldset>
+				<input type="submit" id="App Data" value="Verify API data" class="btn btn-primary" />
+			</form>
+		</div>
+	</body>
+</html>

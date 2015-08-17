@@ -2,29 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>CIA</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css" />
         <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
     </head>
     <body>
         <div class="container">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <ul class="nav">
-                        <li><a th:href="@{/}" href="home.html"> CIA </a></li>
-                    </ul>
+            <div th:include="nav :: mainnav"></div>
+            <div th:include="namekeyform :: appDetails"></div>
+            <div th:switch="${application.connected}">
+                <div th:case="false">
+                    <div th:include="namekeyform :: appDetails"></div>
                 </div>
+                <div th:case="true">
+                    <div th:include="filepick :: upload"></div>
+                </div>
+                <div th:case="*">
+                    <div th:include="filepick :: upload"></div>
+                </div>
+                    
+                <div th:include="filepick :: upload"></div>
             </div>
-            <h1 th:text="${title}">Title</h1>
-            <div th:text="${message}">Fake content</div>
-            <div id="created" th:text="${#dates.format(date)}">
-                July 11,2012 2:17:16 PM CDT
-            </div>
-            <form th:action="@{/wizardoptions}" method="get">
+            <!--             <form action="#" th:action="@{/}" th:object="${account}" method="post">
+                <input type="text" name="appName" value="if188" th:field="*{appName}" />
+                <input type="password" name="apiKey" value="96dfc73cd5e36206313d8125c82c902687e460f865ea9f6d2a02dae682d210d8" id="darkField" th:field="*{apiKey}" />
+                <input type="submit" value="Verify API data" />
+            </form> -->
+            <!--  <form th:action="@{/wizardoptions}" method="get">
                 <input type="submit" value="Start Wizard"/>
             </form>
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Sign Out"/>
-            </form>
+            </form> -->
             <div th:include="footer :: copy"></div>
         </div>
     </body>

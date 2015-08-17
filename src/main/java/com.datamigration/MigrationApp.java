@@ -1,7 +1,7 @@
 /* 
 * @Author: carlos.ochoa
 * @Date:   7/31/2015
-* @Last Modified 2015-08-16
+* @Last Modified 2015-08-17
 * @Modified By Jeremiah Marks - Jeremiah@JLMarks.org
 */
 package com.datamigration;
@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -45,13 +46,32 @@ import java.io.FileOutputStream;
 @Controller
 public class MigrationApp extends WebMvcConfigurerAdapter {
 
-    @RequestMapping("/")
-    public String home(Map<String, Object> model) {
-        model.put("message", "Hello World");
-        model.put("title", "Hello Home");
-        model.put("date", new Date());
+    @RequestMapping(value="/", method=RequestMethod.GET)
+    public String home(Model model) {
+        model.addAttribute("account", new ImportIntegration());
         return "home";
     }
+    @RequestMapping(value="/", method=RequestMethod.POST)
+    public String baseSubmit(@ModelAttribute ImportIntegration account, Model model){
+        model.addAttribute("account", account);
+        try{
+            if (account.getConnected()){
+                return "home";
+
+            }else{
+                return "home";
+            }
+        } catch(Exception e) {
+                return "home";
+            } 
+    }
+    // @RequestMapping("/")
+    // public String home(Map<String, Object> model) {
+    //     model.put("appname", "if188");
+    //     model.put("apikey", "96dfc73cd5e36206313d8125c82c902687e460f865ea9f6d2a02dae682d210d8");
+    //     model.put("date", new Date());
+    //     return "home";
+    // }
     @RequestMapping(value="/greeting", method=RequestMethod.GET)
     public String greetingForm(Model model) {
         model.addAttribute("greeting", new Greeting());
@@ -71,7 +91,10 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         model.addAttribute("importData", new importData());
         return "import";
     }*/
-
+    /*
+    The /upload needs to be rewritten where it only returns the string that is served, I think.
+    I think that @ResponseBody is more for API stuff than just serving html.
+    */
     @RequestMapping(value="/upload", method=RequestMethod.GET)
     public @ResponseBody String provideUploadInfo() {
         return "You can upload a file by posting to this same URL.";
@@ -94,7 +117,9 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
             return "You failed to upload " + name + " because the file was empty.";
         }
     }
-
+/*
+I am going to try and 
+*/
     @RequestMapping(value="/export", method=RequestMethod.GET)
     public String exportForm(Model model) {
         model.addAttribute("export", new Export());
@@ -110,7 +135,7 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
     //dne
 
     @RequestMapping(value="/CIA", method=RequestMethod.GET)
-    public String ciaSubmit(@ModelAttribute Model model) {
+    public String ciaSubmit(Model model) {
         model.addAttribute("cia", new CIA());
         return "cia";
     }
