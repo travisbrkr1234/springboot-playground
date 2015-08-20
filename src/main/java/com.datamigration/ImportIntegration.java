@@ -2,7 +2,7 @@
 * @Author: Jeremiah Marks
 * @Date:   2015-08-18 20:36:11
 * @Last Modified 2015-08-19
-* @Last Modified time: 2015-08-19 02:09:47
+* @Last Modified time: 2015-08-19 22:12:15
 */
 
 /*"Plans for the night"
@@ -109,6 +109,10 @@ public class ImportIntegration {
             this.connected=true;
         }catch (MalformedURLException e){
             this.connected=false;
+        } finally {
+            if(this.connected){
+                this.connected=this.connected;
+            }
         }
     }
 
@@ -123,9 +127,9 @@ public class ImportIntegration {
             this.dataToPass.add(this.submitData);
             this.results =  (int)this.connection.execute("DataService.count", this.dataToPass);
             this.connected=true;
-        }catch (XmlRpcException e) {
+        }catch (XmlRpcException|MalformedURLException e) {
           this.connected=false;
-      }
+      } finally{}
     }
 
     public int getNumExistingContacts() throws XmlRpcException{
@@ -133,9 +137,13 @@ public class ImportIntegration {
         try{
             numofRecords=(int)this.getRecordsOnTable("Contact");
         }catch(XmlRpcException e){}
-        return numofRecords;
+        finally{
+            return numofRecords;
+        }
     }
     public int getRecordsOnTable(String tableName) throws XmlRpcException{
+        /*This is intended to allow a user to see how many records they are about to pull*/
+        /*so that they can make appropriate room for them.*/
         int records=-1;
         this.submitData= new HashMap();
         this.dataToPass = new ArrayList();
@@ -161,18 +169,23 @@ public class ImportIntegration {
         /*This should probably be set up in such a way*/
         /*that is has some sort of @ decarator to help*/
         /*ensure it can only be ran after it connected*/
+        boolean thisResult = false;
+        this.submitData= new HashMap();
+        this.submitData.put("Name", "_FK");
         this.dataToPass = new ArrayList();
         this.dataToPass.add(this.apiKey);
         this.dataToPass.add("DataFormField");
         this.dataToPass.add(this.submitData);
+
+        int results = 0;
         try{
-            this.connection.execute("DataService.count", this.dataToPass);
+            results = (int) this.connection.execute("DataService.count", this.dataToPass);
         } catch(XmlRpcException e){}
         finally{
-            return this.connected;
-            /*Note: this is only here for testing purpose.  It
-            is actually stupud to have this here.
-            */
+            if(results>0){
+                thisResult = true;
+            }
+            return thisResult;
         }
     }
 
