@@ -1,8 +1,8 @@
 /*
 * @Author: Jeremiah Marks
 * @Date:   2015-08-18 20:36:11
-* @Last Modified 2015-08-19
-* @Last Modified time: 2015-08-19 22:12:15
+* @Last Modified 2015-08-24
+* @Last Modified time: 2015-08-24 22:16:00
 */
 
 /*"Plans for the night"
@@ -89,8 +89,9 @@ public class ImportIntegration {
 
     public void setFile(MultipartFile file){
             try {
+                String thisfilename = file.getOriginalFilename();
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(this.name)));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(thisfilename)));
                 stream.write(bytes);
                 stream.close();
                 this.fileuploaded=true;
