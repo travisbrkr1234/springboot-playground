@@ -78,20 +78,20 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
     }
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
-                                                 @RequestParam("file") MultipartFile file){
+    public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(name)));
+                String thisfilename = file.getOriginalFilename();
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(thisfilename)));
                 stream.write(bytes);
                 stream.close();
-                return "You successfully uploaded " + name + "!";
+                return "You successfully uploaded " + thisfilename;
             } catch (Exception e) {
-                return "You failed to upload " + name + " => " + e.getMessage();
+                return "You failed to upload " + " => " + e.getMessage();
             }
         } else {
-            return "You failed to upload " + name + " because the file was empty.";
+            return "You failed to upload " + " because the file was empty.";
         }
     }
 
