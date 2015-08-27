@@ -46,6 +46,8 @@ import java.io.FileOutputStream;
 @Controller
 public class MigrationApp extends WebMvcConfigurerAdapter {
 
+/*Home-------------
+-----------------*/
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String home(Model model) {
         model.addAttribute("account", new ImportIntegration());
@@ -60,18 +62,9 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
             return "home";
         }
     }
-    @RequestMapping(value="/greeting", method=RequestMethod.GET)
-    public String greetingForm(Model model) {
-        model.addAttribute("greeting", new Greeting());
-        return "greeting";
-    }
 
-    @RequestMapping(value="/greeting", method=RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-        model.addAttribute("greeting", greeting);
-        return "result";
-    }
-
+/*File Upload-------------
+-----------------*/
     @RequestMapping(value="/upload", method=RequestMethod.GET)
     public @ResponseBody String provideUploadInfo() {
         return "You can upload a file by posting to this same URL.";
@@ -95,6 +88,8 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         }
     }
 
+/*Export-------------
+-----------------*/
     @RequestMapping(value="/export", method=RequestMethod.GET)
     public String exportForm(Model model) {
         model.addAttribute("export", new Export());

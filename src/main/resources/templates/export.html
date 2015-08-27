@@ -6,6 +6,7 @@
 		<link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
 	</head>
 	<body>
+	<div th:include="nav :: mainnav"></div>
 		<form name="form2" action="#" th:action="@{/export}" th:object="${export}" method="post">
 			<fieldset>
 				<input type="text" name="appname" value="" placeholder="App Name" id="darkField" th:field="*{appName}" />

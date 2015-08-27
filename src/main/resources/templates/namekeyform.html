@@ -12,8 +12,8 @@ if the user wants to change to a different application, they can.
 			<p th:text="'Existing: ' + ${account.numExistingContacts}" />
 			<form name="form2" action="#" th:action="@{/}" th:object="${account}" method="post">
 				<fieldset>
-					<input type="text" name="appName" value="if188" id="darkField" th:field="*{appName}" />
-					<input type="password" name="apiKey" value="96dfc73cd5e36206313d8125c82c902687e460f865ea9f6d2a02dae682d210d8" id="darkField" th:field="*{apiKey}" />
+					<input type="text" name="appName" value="" id="darkField" th:field="*{appName}" />
+					<input type="password" name="apiKey" value="" id="darkField" th:field="*{apiKey}" />
 				</fieldset>
 				<input type="submit" id="App Data" value="Verify API data" class="btn btn-primary" />
 			</form>
