@@ -35,8 +35,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import java.util.Date;
-import java.util.Map;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -61,6 +59,28 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         }else{
             return "home";
         }
+    }
+
+/*Export-------------
+-----------------*/
+    @RequestMapping(value="/export", method=RequestMethod.GET)
+    public String exportForm(Model model) {
+        model.addAttribute("export", new Export());
+        return "export";
+    }
+
+    @RequestMapping(value="/export", method=RequestMethod.POST)
+    public String exportSubmit(@ModelAttribute Export export, Model model) {
+        model.addAttribute("export", export);
+        return "exportResults";
+    }
+
+/*Import -------------
+-----------------
+    @ReqestMapping(value="/doimport", method=RequestMethod.GET)
+    public  String importData(@ModelAttribute DoImportData doImportData, Model model) {
+        model.addAttribure("importData", doImportData);
+        return "importData";
     }
 
 /*File Upload-------------
@@ -88,19 +108,6 @@ public class MigrationApp extends WebMvcConfigurerAdapter {
         }
     }
 
-/*Export-------------
------------------*/
-    @RequestMapping(value="/export", method=RequestMethod.GET)
-    public String exportForm(Model model) {
-        model.addAttribute("export", new Export());
-        return "export";
-    }
-
-    @RequestMapping(value="/export", method=RequestMethod.POST)
-    public String exportSubmit(@ModelAttribute Export export, Model model) {
-        model.addAttribute("export", export);
-        return "exportResults";
-    }
 
     @RequestMapping("/foo")
     public String foo() {

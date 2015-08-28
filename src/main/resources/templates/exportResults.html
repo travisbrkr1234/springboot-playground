@@ -8,16 +8,6 @@
     <h1>Verify Info</h1>
         <p th:text="'app name: ' + ${export.appName}" />
         <p th:text="'key: ' + ${export.apiKey}" />
-
-    <form action="/upload" th:action="@{/upload}" method="post" enctype="multipart/form-data">
-        <div>Name Your File:</div>
-        <input type="text" name="name" />
-        <div>File to upload:</div>
-        <input type="file" name="file" />
-        <br />
-        <br />
-        <input type="submit" value="Upload" />
-    </form>
-
+    <div th:include="filepick :: upload"></div>
 </body>
 </html>
