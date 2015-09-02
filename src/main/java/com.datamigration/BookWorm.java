@@ -14,7 +14,11 @@ public class Bookworm {
         String line = br.readLine();
         while((line = br.readLine()) !=null) {
             String[] b = line.split(splitBy);
-            System.out.println("id: " + b[0]);
+
+            String infusionId = "3";
+
+            String col1 = b[1];
+            System.out.println("id: " + col1);
             System.out.println("email: " + b[1]);
             System.out.println("total: " + b[2]);
             System.out.println(b[3]);
@@ -25,7 +29,7 @@ public class Bookworm {
             System.out.println(b[8]);
             System.out.println(b[9]);
             System.out.println(b[10]);
-            //code to import data from template
+            //form data and run code to import data
         }
         br.close();
     }
